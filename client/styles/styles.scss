@@ -1,0 +1,28 @@
+#loginPage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#selectLanguageRow{
+    display:flex;
+    justify-content:center;
+}
+
+#registerPage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input{
+height: 5vh;
+width: 10;
+border-radius: 20px;
+background-color: rgb(212, 212, 212);
+}
+
+
+button{
+    
+}
