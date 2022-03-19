@@ -9,50 +9,30 @@ const quizController = {};
 //get request for logins
 
 
-//post request to create new users and their preferences
-quizController.addNewUserAndPref = (req, res, next) => {
-    const queryString = '';
-}
 
 
 
-//get request to query user table for existing user
-quizController.getUser = (req, res, next) => {
-    const queryString = '';
-}
+//grab lesson row based on the user (or the userID)
+//
+quizController.getLessons = (req, res, next) => {
+    //query users table to get their learn_language and known_language  
+    selectString = 'SELECT learn_language a';
+    // from user known language table join the user learn_language table 
+    fromString = 'FROM user u RIGHT OUTER JOIN lesson l ';
 
+    const queryString;
+    db.query(queryString).then((data) => {
 
-//controller to get answers
-quizController.getAnswers = (req, res, next) => {
-    const queryString = '';
-    db.qquery(queryString).then((data) => {
-
-
+    
     })
+    //Left outer join => everything 
 }
  
   //route to get user
 
   
-  
-//Controller to update user details
-quizController.addUserDetails = (req, res, next) => {
-    
-    const queryString = ''; 
-}
 
-//Controller to post user to user table 
-quizController.postUser = (req, res, next) => {
-    
-    const queryString = '';
-}
-  
-//route to delete user
-quizController.deleteUser = (req,res, next) => {
-    
-    const queryString = '';
 
-    next();
-}
+
 
 module.exports = quizController;
