@@ -16,13 +16,28 @@
 }
 
 input{
-height: 5vh;
+height: 3vh;
 width: 10;
 border-radius: 20px;
 background-color: rgb(212, 212, 212);
+border-color: rgb(212, 212, 212);
+border-style: solid;
 }
 
 
 button{
     
+}
+
+#mainPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 500px;
+    height: 50vh;
+    box-shadow: 0px 0px 10px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
 }
