@@ -74,13 +74,17 @@ userController.createUser = (req, res, next) => {
   }
 };
 
-/*
+
 //method to delete user
 userController.deleteUser = (req, res, next) => {
-//grab username from req.body.username --- potentially user_id?
-const {username} = req.body.username;
-//query db to find user to be deleted
-const deleteQuery = `DELETE FROM USERS WHERE username = ${username}`;
+// //grab username from req.body.username --- potentially user_id?
+
+console.log('ggello')
+const {username, password} = req.body;
+// //query db to find user to be deleted
+const deleteQuery = `DELETE FROM users WHERE username = $1 AND password = $2`;
+const arr = [username, password];
+db.query(deleteQuery, arr, (err, response) => {
 if (err) {
   return next({
     log: 'userController.deleteUser query failed',
@@ -88,29 +92,33 @@ if (err) {
   })
 } else {
   return next();
-}
+  }
+  })
 }
 
+
+/*
 //method to update user info
 userController.updateUser = (req, res, next) => {
   //grab username from req.body.username --- potentially username
-  const {username, learn_language, known_language} = req.body.data;
+  const {username, password, learn_language, known_language} = req.body.data;
   //query db to isolate user's details
   const updateLearnQuery = `UPDATE users SET learn_language = ${learn_language} WHERE username = ${username}`
+  const arr = [username, password]
   //update details
-  db.query(updateLearnQueary) {
+  db.query(updateLearnQueary, arr (err, response) => {
     if (err {
       return next({
-        log: 'userController.updateUserLearn query failed'
-        message: {err: err};
+        log: 'userController.updateUserLearn query failed',
+        message: {err: err},
       })
     }) else {
       return next();
-    }
+    })
   }
   const updateKnownQuery = `UPDATE users SET known_language = ${known_language} WHERE username = ${username}`
   //update details
-  db.query(updateKnownQuery) {
+  db.query(updateKnownQuery, (err, response) => {
     if (err {
       return next({
         log: 'userController.updateUserKnown query failed'
@@ -119,7 +127,7 @@ userController.updateUser = (req, res, next) => {
     }) else {
       return next();
     }
-  }
+  })
 }
 */
 

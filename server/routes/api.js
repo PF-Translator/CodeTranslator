@@ -51,8 +51,8 @@ router.patch('/update', (req, res) => {
 })
 
 // //delete user
-// router.delete('/delete', userController.deleteUser, (req, res) => {
-//   res.status(200).send('this be deleted');
-// })
+router.delete('/delete', userController.deleteUser, (req, res) => {
+  res.status(200).send('this be deleted');
+})
 
 module.exports = router;

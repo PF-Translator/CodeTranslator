@@ -1,10 +1,12 @@
 import React from 'react';
 ;
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './../styles/styles.scss'
 
  import QuestionBox from '../components/questionBox.jsx';
+
 
 
 
@@ -37,13 +39,21 @@ for( const el in props.state.learn_languageTable){
 }
 
 const wrongDiv = (
-<div>
-YOU ARE WRONG LOSER
-    <div>
-      
+    <div id='wrongDiv'>
+    YOU ARE WRONG LOSER
+        <div>
+        {props.state.known_language}:
+        <div id='correctionBox'>
+            {props.state.known_languageTable[index].correct_answer}
+        </div>
+          {props.state.learn_language}:
+            <div id='correctionBox'>
+              {props.state.learn_languageTable[index].correct_answer}   
+            </div>
+       
+        </div>
+    <button onClick={changeQuestion}>Next question</button>
     </div>
-<button onClick={changeQuestion}>Next question</button>
-</div>
 )
 
 function wrongAnswer(e){
@@ -69,7 +79,14 @@ if(isRight === false){
 
     return (
         <div id='mainPage'>
-            <h1> Code Translator </h1>
+        <div id='mainBar'>
+            <div><h1> Code Translator </h1></div>
+            <div id='settings'><Link to='/settings'> Settings</Link></div>
+           
+            
+           
+        </div>
+            
             
             {currQuestion}
                
