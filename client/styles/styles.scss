@@ -1,23 +1,24 @@
-#loginPage{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap');
 
-#selectLanguageRow{
-    display:flex;
-    justify-content:center;
-}
+$foregroundColor: rgb(87, 87, 87);
+$secondaryColor : rgb(178, 85, 231); 
+$secondaryColorDark: rgb(154, 71, 202); 
 
-#registerPage{
-    display:flex;
-    flex-direction: column;
+body{
+    font-family: 'Mukta', sans-serif;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    justify-content: center;
     align-items: center;
+    height: 60vh;
+    
 }
 
 input{
+    
 height: 3vh;
-width: 10;
+width: 60%;
+min-height: 30px;
 border-radius: 20px;
 background-color: rgb(212, 212, 212);
 border-color: rgb(212, 212, 212);
@@ -25,8 +26,8 @@ border-style: solid;
 }
 
 
-button{
-    
+p{
+    text-align: center;
 }
 
 #mainPage{
@@ -35,9 +36,140 @@ button{
     align-items: center;
 
     min-height: 500px;
-    height: 50vh;
-    box-shadow: 0px 0px 10px;
+   
+    box-shadow: 0px 0px 20px;
     border-radius: 20px;
-    border-style: solid;
-    border-color: black;
+    background-color: $foregroundColor;
 }
+
+#loginPage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 60vw;
+    height: 50vh;
+    background-color: $foregroundColor;
+    border-radius: 80px;
+    min-height: 400px;
+    box-shadow: 0px 0px 20px;
+}
+
+#registerPage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $foregroundColor;
+    border-radius: 30px;
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-bottom: 40px;
+    box-shadow: 0px 0px 20px;    
+}
+
+#loginInputs{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#loginActions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+select{
+    width: 50%;
+    border-radius: 8px;
+    background-color: rgb(212, 212, 212);
+border-color: rgb(212, 212, 212);
+}
+
+#registerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+#registerBox{
+    font-weight: bold;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+#selectLanguagesRow{
+    font-weight: bold;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+link{
+    width: 100%;
+}
+
+
+
+button{
+font-family: 'Mukta', sans-serif;
+font-weight: bold;
+   background-color: $secondaryColor; 
+   border-style: none;
+
+}
+
+button:hover{
+    background-color: $secondaryColorDark;
+}
+
+#loginButton{
+    width: 10vw;
+    height: 3vh;
+    min-height: 30px;
+    border-radius: 20px;
+}
+
+#registerButton{
+    width: 10vw;
+    height: 3vh;
+    min-height: 30px;
+    border-radius: 20px;
+}
+
+.answerButton{
+width: 200px;
+height: 100px;
+border-radius: 35px;
+}
+
+.answerButton:hover{
+background-color: $secondaryColorDark;
+border-radius: 35px;
+}
+
+#answersContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+    width: 50%;
+}
+
+#questionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+

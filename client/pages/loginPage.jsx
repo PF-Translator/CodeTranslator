@@ -52,16 +52,23 @@ const loginPage = (props) => {
 
     return (
         <div id='loginPage'>
-            <h1> Code Translator </h1>
+            <div>
+                <h1> Code Translator </h1>
+            </div>
+  
             <div id='loginBox'>
-            <form>
+            <form id='loginInputs'>
                 <input id='username' placeholder='Username'></input>
                 <input id='password' placeholder='Password'></input>
-                <Link to='/main' ><button onClick={login}> Login</button></Link>       
-                <p>Don't have an account? <Link to='/register'> Register here!</Link></p>
+                
             </form>
             </div>
-            <div id='loginconfirmation'></div>
+            
+            <div id='loginActions'>
+            <Link to='/main' ><button id='loginButton' onClick={login}> Login</button></Link>
+                       
+                <p>Don't have an account? <Link to='/register'> Register here!</Link></p>
+            </div>
         </div>
     );
 };
