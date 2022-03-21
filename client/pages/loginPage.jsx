@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate , Navigate } from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
 
 import './../styles/styles.scss'
@@ -8,8 +8,12 @@ import './../styles/styles.scss'
 
 
 
-
 const loginPage = (props) => {
+    const navigate = useNavigate();
+    // function redirect() {
+    //     const navigate = useNavigate();
+    //     navigate('/main');
+    // }
 
  // login procedure
      function login() {
@@ -37,19 +41,26 @@ const loginPage = (props) => {
             // update state with the response 
     
 
-            //try later when accessing state 
-            // props.setState({
-            //     ...data
-            // })
+           //try later when accessing state 
+            // props.setState(state => ({
+            //     isLoggedIn: true,
+            // }))
             
+            // isLoggedIn: true;
+            // user_id: data.user_id;
+            
+
             props.state.isLoggedIn = true;
             props.state.user_id = data.user_id;
             props.state.learn_language = data.learn_language;
             props.state.learn_languageTable = data.learn_languageTable;
             props.state.known_language = data.known_language;
             props.state.known_languageTable = data.known_languageTable;
+            
+            console.log(props.state.learn_languageTable);
+            navigate('/main');
 
-            console.log(props.state)
+
             
         })
         .catch(error =>{
@@ -73,14 +84,12 @@ const loginPage = (props) => {
         // return(
         //     <Redirect to='/main'/> 
         // )
-
-        navigate = useNavigate();
-        navigate('/main');
+        // 
+        // <Navigate replace to='/main' />
     }
 
     return (
         <div id='loginPage'>
-
             <div>
                 <h1> Code Translator </h1>
             </div>
