@@ -33,7 +33,7 @@ const testObj = {
     question: 'what is the right answer'
 }
 
-const test = <QuestionBox lesson = {testObj} key = {1} />;
+const test = <QuestionBox lessons = {testObj} key = {1} />;
     return (
         <div id='mainPage'>
             <h1> Code Translator </h1>

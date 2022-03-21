@@ -12,17 +12,18 @@ import SettingsPage from './pages/settingsPage.jsx';
 const App = () => {
 
     const [state, setState ] = useState({
-    userId : null,
-    learnLanguage : null,
-    learnLanguageTable: null,
-    knownLanguage: null,
-    knownLanguageTable: null
+    isLoggedIn: false,
+    user_id : null,
+    learn_language : null,
+    learn_languageTable: null,
+    known_language: null,
+    known_languageTable: null
      })
     
     return (
         <Router>
             <Routes>
-                <Route path='/' element={<LoginPage setState = {setState} />}/>
+                <Route path='/' element={<LoginPage state = {state} setState = {setState} />}/>
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/main' element={<MainPage state = {state} />} />
                 <Route path='/settings' element={<SettingsPage />} />

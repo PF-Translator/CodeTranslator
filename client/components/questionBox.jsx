@@ -14,30 +14,47 @@ import './../styles/styles.scss'
 
 const questionBox = (props) => {
 
+    let answerResponse = [];
+
+
+    // show example for both learn and known language
+
+
+
+
+    // store examples for both 
+    const examples = [];
+
+
+
     function rightAnswer(){
 
     }
 
     function wrongAnswer(){
-
+        let response = (
+            <div>
+                Incorrect!
+            </div>
+        )
     }
 
 
     let answers = [
 
-    <div>
+    <div key={1}>
         <button className='answerButton' onClick={rightAnswer}>{props.lesson.corr_ans}</button>
     </div>,
-    <div>
+    <div key={2}>
         <button className='answerButton' onClick={wrongAnswer}>{props.lesson.wrong1}</button>
 
     </div>,
     
-    <div>
+    <div key={3}>
         <button className='answerButton' onClick={wrongAnswer} >{props.lesson.wrong2}</button>
     </div>,
 
-    <div>
+    <div key={4}>
         <button className='answerButton' onClick={wrongAnswer} >{props.lesson.wrong3}</button>
     </div>
             
@@ -62,6 +79,7 @@ const questionBox = (props) => {
          <form id='answersContainer'>
             {answerElement}
         </form>   
+            {answerResponse}
         </div>
         
     );

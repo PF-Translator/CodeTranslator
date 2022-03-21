@@ -2,20 +2,16 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
-//require controller that we setup here
-const quizRouter = require('./routes/quiz.js');
-const userRouter = require('./routes/user.js');
+
+// require router that we setup here
+const apiRouter = require('./routes/api.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('client'));
 
 // handle user request
-app.use('/user', userRouter);
-
-//handle quiz request
-app.use('/quiz', quizRouter)
-
+app.use('/api', apiRouter);
 
 // error handler for bad requests
 app.use((req, res) => {
