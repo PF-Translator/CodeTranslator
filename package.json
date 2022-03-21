@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon Server/server.js",
-    "dev": "export NODE_ENV=development; webpack serve & nodemon ./Server/server.js",
+    "start": "nodemon server/server.js",
+    "dev": "export NODE_ENV=development; webpack serve & nodemon ./server/server.js",
     "build": "export NODE_ENV=production; webpack"
   },
   "repository": {
@@ -28,11 +28,13 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
+    "react-router": "^6.2.2",
     "react-router-dom": "^6.2.2",
     "redux": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
