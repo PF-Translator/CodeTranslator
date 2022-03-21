@@ -14,27 +14,31 @@ import './../styles/styles.scss'
 
 const questionBox = (props) => {
 
+    function rightAnswer(){
+
+    }
+
+    function wrongAnswer(){
+
+    }
+
 
     let answers = [
 
     <div>
-    <input type='radio' id='correct' name='lang-answer' value='correct' />
-        <label for='correct'>{props.lesson.corr_ans}</label><br/> 
+        <button className='answerButton' onClick={rightAnswer}>{props.lesson.corr_ans}</button>
     </div>,
     <div>
-    <input type='radio' id='wrong1' name='lang-answer' value='wrong1' />
-                    <label for='wrong1'>{props.lesson.wrong1}</label><br/> 
+        <button className='answerButton' onClick={wrongAnswer}>{props.lesson.wrong1}</button>
 
     </div>,
     
     <div>
-    <input type='radio' id='wrong2' name='lang-answer' value='wrong2'/>
-        <label for='wrong2'>{props.lesson.wrong2}</label><br/> 
+        <button className='answerButton' onClick={wrongAnswer} >{props.lesson.wrong2}</button>
     </div>,
 
     <div>
-    <input type='radio' id='wrong3' name='lang-answer' value='wrong3' />
-        <label for='wrong3'>{props.lesson.wrong3}</label><br/>
+        <button className='answerButton' onClick={wrongAnswer} >{props.lesson.wrong3}</button>
     </div>
             
 
@@ -53,12 +57,11 @@ const questionBox = (props) => {
 
     return (
 
-        <div>
+        <div id='questionContainer'>
             <h1>{props.lesson.question} </h1>
-         <form>
+         <form id='answersContainer'>
             {answerElement}
         </form>   
-        <button>Submit answer</button>
         </div>
         
     );
