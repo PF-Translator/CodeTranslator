@@ -75,6 +75,7 @@ userController.createUser = (req, res, next) => {
 };
 
 /*
+//method to delete user
 userController.deleteUser = (req, res, next) => {
 //grab username from req.body.username --- potentially user_id?
 const {username} = req.body.username;
@@ -90,19 +91,35 @@ if (err) {
 }
 }
 
+//method to update user info
 userController.updateUser = (req, res, next) => {
   //grab username from req.body.username --- potentially username
   const {username, learn_language, known_language} = req.body.data;
   //query db to isolate user's details
   const updateLearnQuery = `UPDATE users SET learn_language = ${learn_language} WHERE username = ${username}`
   //update details
-  db.query(updateLearnQueary) -------> left off here before lunch
-  //throw err if need be
-  //go to next piece of middleware
-  const updateKnownQuery = `UPDATE users SET `
+  db.query(updateLearnQueary) {
+    if (err {
+      return next({
+        log: 'userController.updateUserLearn query failed'
+        message: {err: err};
+      })
+    }) else {
+      return next();
+    }
+  }
+  const updateKnownQuery = `UPDATE users SET known_language = ${known_language} WHERE username = ${username}`
   //update details
-  //throw err if need be
-  //go to next piece of middleware
+  db.query(updateKnownQuery) {
+    if (err {
+      return next({
+        log: 'userController.updateUserKnown query failed'
+        message: {err: err};
+      })
+    }) else {
+      return next();
+    }
+  }
 }
 */
 

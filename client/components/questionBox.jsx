@@ -14,36 +14,24 @@ import './../styles/styles.scss'
 
 const questionBox = (props) => {
 
-    let answerResponse = [];
 
 
     // show example for both learn and known language
 
 
-
-
-    // store examples for both 
-    const examples = [];
-
-
-
-    function rightAnswer(){
-
-    }
-
-    function wrongAnswer(){
-        let response = (
-            <div>
-                Incorrect!
-            </div>
-        )
+    function wrongAnswer(e){
+        
+        e.preventDefault();
+        console.log('you are wrong')
+        props.setisRight(false)
+ 
     }
 
 
     let answers = [
 
     <div key={1}>
-        <button className='answerButton' onClick={rightAnswer}>{props.lesson.corr_ans}</button>
+        <button className='answerButton' onClick={props.changeQuestion}>{props.lesson.correct_answer}</button>
     </div>,
     <div key={2}>
         <button className='answerButton' onClick={wrongAnswer}>{props.lesson.wrong1}</button>
@@ -56,11 +44,10 @@ const questionBox = (props) => {
 
     <div key={4}>
         <button className='answerButton' onClick={wrongAnswer} >{props.lesson.wrong3}</button>
-    </div>
-            
+    </div>,
 
     ]
-    const answerElement = []
+    let answerElement = []
     // create an array of answers
     for ( let i = 0; i < 4 ; i ++){
         const el = Math.floor(Math.random() * answers.length)
@@ -79,7 +66,6 @@ const questionBox = (props) => {
          <form id='answersContainer'>
             {answerElement}
         </form>   
-            {answerResponse}
         </div>
         
     );

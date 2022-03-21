@@ -12,8 +12,9 @@ const router = express.Router();
 // })
 
 //login and verify user
-router.post('/login', userController.verifyUser, quizController.getLessons, (req, res) => {
-  res.status(200).json(res.locals.data);
+router.post('/login',userController.verifyUser, quizController.getLessons, (req, res) => {
+
+   res.status(200).json(res.locals.data);
   //middleware: verify user
 });
 
