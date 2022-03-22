@@ -7,23 +7,23 @@ import './../styles/styles.scss'
 
 
 
-
+//--------------------------------------------------------Main Login Page----------------------------------------------------------------------
 const loginPage = (props) => {
+    //declare navigate to use later to navigate to different route when login is verified
     const navigate = useNavigate();
-    // function redirect() {
-    //     const navigate = useNavigate();
-    //     navigate('/main');
-    // }
 
  // login procedure
      function login() {
 
+        //set up body to match what server is expecting in request object
         const loginInfo = { 
+            //Grab data from input fields in DOM
             username: document.getElementById('username').value, 
             password: document.getElementById('password').value
         }
 
     // send post request with data
+    // due to how route handler is set up, this will also retrieve data sent from backend such as known and learn language and user info
         fetch('api/login', {
             method: 'POST',
             headers: {
@@ -32,62 +32,31 @@ const loginPage = (props) => {
             body : JSON.stringify(loginInfo),
         })
         .then(res => {
+            // If invalid login, then server will send an error status of 401
             if(res.status !== 200){
                     throw new Error('invalid login')
             }
             return res.json()
         })
         .then( (data) =>  {
+
             // update state with the response 
-    
-
-           //try later when accessing state 
-            // props.setState(state => ({
-            //     isLoggedIn: true,
-            // }))
-            
-            // isLoggedIn: true;
-            // user_id: data.user_id;
-            
-
             props.state.isLoggedIn = true;
             props.state.user_id = data.user_id;
             props.state.learn_language = data.learn_language;
             props.state.learn_languageTable = data.learn_languageTable;
             props.state.known_language = data.known_language;
             props.state.known_languageTable = data.known_languageTable;
-            
-            console.log(props.state.learn_languageTable);
+
+            //redirect to main/"quiz" page of app
             navigate('/main');
-
-
-            
         })
         .catch(error =>{
-            console.log(error);
-            
+            console.log(error); 
         })
-        
-
     }
 
-    /* 
-    {
-        userId:
-        learnLanguage:
-        learnLanguageTable:
-        knownLanguage:
-        knownLanguageTable:
-    }
-    */
-    if(props.state.isLoggedIn){
-        // return(
-        //     <Redirect to='/main'/> 
-        // )
-        // 
-        // <Navigate replace to='/main' />
-    }
-
+    //render login page of application
     return (
         <div id='loginPage'>
             <div>
@@ -104,7 +73,6 @@ const loginPage = (props) => {
             
             <div id='loginActions'>
             <button id='loginButton' onClick={login}> Login</button>
-                       
                 <p>Don't have an account? <Link to='/register'> Register here!</Link></p>
             </div>
         </div>
@@ -112,39 +80,3 @@ const loginPage = (props) => {
 };
 
 export default loginPage;
-
-// function BooksList () {
-
-//     const [books, updateBooks] = React.useState([]);
- 
-  
- 
-//     React.useEffect(function effectFunction() {
- 
-//         fetch('https://the-fake-harry-potter-api.com/books')
- 
-//             .then(response => response.json())
- 
-//             .then(({ data: books }) => {
- 
-//                 updateBooks(books);
- 
-//             });
- 
-//     }, []);
-
-// return (
-
-//     <ul>
- 
-//         books.map(book => (
- 
-//          <li key={book.id}>{book.name}</li>  
- 
-//         ));
- 
-//     </ul>
- 
-//     );
- 
-//  }

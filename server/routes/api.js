@@ -11,32 +11,10 @@ const router = express.Router();
 //   //insert response of row that we grab in quizController
 // })
 
-//login and verify user
+//login/verify user and get lesson
 router.post('/login',userController.verifyUser, quizController.getLessons, (req, res) => {
-
    res.status(200).json(res.locals.data);
-  //middleware: verify user
 });
-
-    /* 
-    {
-        userId:
-        learnLanguage:
-        learnLanguageTable:
-        knownLanguage:
-        knownLanguageTable:
-    }
-    */
-
-/* 
-{
-    userId:
-    learnLanguage:
-    learnLanguageTable:
-    knownLanguage:
-    knownLanguageTable:
-}
-*/
 
 
 //add/create user
@@ -47,7 +25,7 @@ router.post('/signup', userController.createUser, (req, res) => {
 //update user details
 router.patch('/update', (req, res) => {
   res.status(200);
-  //TBD on response
+  // Have not implemented yet
 })
 
 // //delete user

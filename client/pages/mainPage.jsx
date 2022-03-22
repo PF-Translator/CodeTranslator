@@ -1,43 +1,30 @@
 import React from 'react';
-;
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import './../styles/styles.scss'
+import QuestionBox from '../components/questionBox.jsx';
 
- import QuestionBox from '../components/questionBox.jsx';
-
-
-
-
-// render a new questions box 
-
-// get the questions for the current learn language
-    // store questionBox components for each question into the questionList
-
-
-
-
-
+//-------------------------------------------------------------------MAIN/QUIZ PAGE--------------------------------------------------------
 const mainPage = (props) => {
 
     // on load send a fetch request to the database to grab the question le
 
-//const arr = props.state.learnLanguageTable; // passed in questiosn from the database
 
 // list of all the questions
 
 const [index, setIndex ] = useState(0);
 const [isRight, setisRight] = useState(true);
 
-const questionsEl = [];
+const questionsList = [];
 
 let currQuestion;
-
+//showing one question with multiple choice answers
 for( const el in props.state.learn_languageTable){
-    questionsEl.push(<QuestionBox lesson = {props.state.learn_languageTable[el]} key = {el} setisRight = {setisRight} changeQuestion={changeQuestion}/>)
+    questionsList.push(<QuestionBox lesson = {props.state.learn_languageTable[el]} key = {el} setisRight = {setisRight} changeQuestion={changeQuestion}/>)
 }
 
+
+// wrong display for incorrect answer
 const wrongDiv = (
     <div id='wrongDiv'>
     YOU ARE WRONG LOSER
@@ -56,23 +43,19 @@ const wrongDiv = (
     </div>
 )
 
-function wrongAnswer(e){
-    e.preventDefault();
-    currQuestion = wrongDiv;
-}
-
+// render next question on call, preventing from going to end of array while also resetting isRigh
 function changeQuestion(e){
     e.preventDefault();
-    if(index < questionsEl.length - 1){
+    if(index < questionsList.length - 1){
        setIndex( index + 1) 
     }
-    
     setisRight(null)
 }
 
-// populate our main page with questions from the learn language table
-// props.state.learn_languageTable
-currQuestion = questionsEl[index];
+// update rendered element with new question from questions array
+currQuestion = questionsList[index];
+
+// render the wrong display if the incorrect answer was chosen
 if(isRight === false){
     currQuestion = wrongDiv;
 }
@@ -81,16 +64,9 @@ if(isRight === false){
         <div id='mainPage'>
         <div id='mainBar'>
             <div><h1> Code Translator </h1></div>
-            <div id='settings'><Link to='/settings'> Settings</Link></div>
-           
-            
-           
-        </div>
-            
-            
-            {currQuestion}
-               
-            
+            <div id='settings'><Link to='/settings'> Settings</Link></div>           
+        </div>                  
+            {currQuestion}                           
         </div>
     );
 };

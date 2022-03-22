@@ -1,21 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux'//don't think is necessary but too late to mess with
 import { Link } from 'react-router-dom';
-
 import './../styles/styles.scss';
 
+//----------------------------------------------------------REGISTRATION PAGE--------------------------------------------------------------
 const registerPage = () => {
-
+    //function to handle sending request to register user
     function registerUser(){
 
+        //set up body to match what server is expecting in request object
         const registerInfo = {
-                username: document.getElementById('usernameInput').value,
-                password: document.getElementById('passwordInput').value,
-                known_language: document.getElementById('knownLangOptions').value,
-                learn_language: document.getElementById('learnLangOptions').value,
-                email: document.getElementById('emailInput').value,
+            //grab data from input fields on DOM
+            username: document.getElementById('usernameInput').value,
+            password: document.getElementById('passwordInput').value,
+            known_language: document.getElementById('knownLangOptions').value,
+            learn_language: document.getElementById('learnLangOptions').value,
+            email: document.getElementById('emailInput').value,
         }
 
+        //send post request to register user and add them to database
         fetch('/api/signup',{
             method: 'POST',
             headers: {
@@ -27,6 +30,7 @@ const registerPage = () => {
 
     }
 
+//render registration page
   return (
     <div id='registerPage'>
             <h1> Code Translator Registration </h1>
@@ -51,7 +55,7 @@ const registerPage = () => {
                 
             </form>
             
-                            <Link to='/'><button id='registerButton' onClick={registerUser}> Register</button></Link>
+            <Link to='/'><button id='registerButton' onClick={registerUser}> Register</button></Link>
          
 
             </div>

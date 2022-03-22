@@ -2,32 +2,6 @@ const db = require('../database.js');
 
 const quizController = {};
 
-
- 
-
-// we need methods for each type of request that will be made
-//get request for logins
-
-
- /* 
- //res.locals.data =
-    {
-        userId:
-        learnLanguage:
-        learnLanguageTable:
-        knownLanguage:
-        knownLanguageTable:
-    }
-*/
-
-// {
-
-//   learnLanguageTable:
-      
-//   knownLanguageTable:
-// }
-
-
 //grab lesson row based on the user (or the userID)
 quizController.getLessons = async (req, res, next) => {
 
@@ -63,11 +37,4 @@ quizController.getLessons = async (req, res, next) => {
   }
 }
  
-
-
-  
-
-
-
-
 module.exports = quizController;
