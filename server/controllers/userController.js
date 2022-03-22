@@ -77,13 +77,15 @@ userController.createUser = (req, res, next) => {
 
 //method to delete user
 userController.deleteUser = (req, res, next) => {
-// //grab username from req.body.username --- potentially user_id?
-
-console.log('ggello')
+// //grab username and password from req.body --- potentially user_id?
 const {username, password} = req.body;
+
 // //query db to find user to be deleted
 const deleteQuery = `DELETE FROM users WHERE username = $1 AND password = $2`;
+//store variable in array to pass to db.query
 const arr = [username, password];
+
+//query the database
 db.query(deleteQuery, arr, (err, response) => {
 if (err) {
   return next({
@@ -91,6 +93,7 @@ if (err) {
     message: {err: err}
   })
 } else {
+  //after succesfull deletion, pass to next middleware, no need to send info
   return next();
   }
   })

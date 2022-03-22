@@ -6,8 +6,11 @@ const PORT = 3000;
 // require router that we setup here
 const apiRouter = require('./routes/api.js');
 
+//handle parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//handle serving static files
 app.use(express.static('client'));
 
 // handle user request
@@ -30,6 +33,7 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 })
 
+//start server listening on Port 3000
 app.listen(PORT, () => {
   console.log(`Always listening on port: ${PORT}...`);
 })

@@ -1,23 +1,30 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+//------------------------------------------------------------------USER SETTINGS PAGE-----------------------------------------------------------------
 const settingsPage = (e) => {
+    //declare navigate to use when we need to redirect to different react route
     const navigate = useNavigate();
 
+    //function to handle deleting user and sending DELETE request
     function deleteUser(e) {
+        //prevent refresh of page on click
         e.preventDefault();
 
+        //setup req.body for how backend wants to recieve it
         const user = {
+            //grab data from input fields on DOM
             username: document.getElementById('username').value,
             password: document.getElementById('password').value
         };
-
+        //deleting a user from the information supplied above
         fetch('api/delete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
+        //sending the user back to login page after deletion
         }).then(()=> {
             navigate('/');
 
@@ -28,6 +35,7 @@ const settingsPage = (e) => {
         
     }
 
+    //rendering settings page
     return (
         <div id='settingsPage'>
             <div id='selectLanguagesRow'>  
